@@ -1,1 +1,0 @@
-print("Pipeline executada com sucesso!")
