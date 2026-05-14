@@ -1,4 +1,4 @@
-name: Pipeline Python Simples
+name: Pipeline Python Avançada
 
 on:
   push:
@@ -6,17 +6,26 @@ on:
       - main
 
 jobs:
-  executar-script:
+  executar-pipeline:
     runs-on: ubuntu-latest
 
     steps:
       - name: Fazer checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar ambiente Python
+      - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Executar script Python
+      - name: Verificar versão do Python
+        run: python --version
+
+      - name: Listar arquivos do projeto
+        run: ls
+
+      - name: Executar script principal
         run: python app.py
+
+      - name: Exibir mensagem final
+        run: echo "Pipeline concluída com sucesso!"
