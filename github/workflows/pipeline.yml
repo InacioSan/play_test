@@ -1,4 +1,4 @@
-name: Pipeline Python Avançada
+name: Pipeline Calculadora
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  executar-pipeline:
+  testar-calculadora:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,14 +18,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Verificar versão do Python
-        run: python --version
+      - name: Instalar pytest
+        run: pip install pytest
 
-      - name: Listar arquivos do projeto
-        run: ls
-
-      - name: Executar script principal
+      - name: Executar calculadora
         run: python app.py
 
-      - name: Exibir mensagem final
-        run: echo "Pipeline concluída com sucesso!"
+      - name: Rodar testes
+        run: pytest
